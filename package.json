@@ -6,13 +6,19 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "airbnb": "^0.0.2",
+    "@tanstack/match-sorter-utils": "^8.8.4",
+    "@tanstack/react-table": "^8.10.7",
     "autoprefixer": "^10.4.16",
+    "classnames": "^2.3.2",
     "eslint": "^8.52.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-react": "^7.33.2",
     "next": "^13.5.6",
     "postcss": "^8.4.31",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-select": "^5.7.7",
     "tailwindcss": "^3.3.3"
   }
 }

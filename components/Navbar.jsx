@@ -1,9 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 
-const Navbar = () => {
-  return (
-    <nav className="bg-blue-600 px-4 flex justify-between items-center">
+const Navbar = () => (
+    <nav className="bg-blue-600 px-4 flex justify-between items-center mb-12">
       <div>
         <Image src="/logo.png" width={90} height={90} alt="Massive Bioinformatics icon" />
       </div>
@@ -30,6 +29,5 @@ const Navbar = () => {
       </div>
     </nav>
   );
-};
 
 export default Navbar;

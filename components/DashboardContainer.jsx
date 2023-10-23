@@ -1,13 +1,11 @@
 import React from 'react';
 import Navbar from './Navbar';
 
-const DashboardContainer = ({ children }) => {
-  return (
-    <div>
+const DashboardContainer = ({ children }) => (
+    <>
         <Navbar />
-        { children }
-    </div>
+        <div className="mx-8">{ children }</div>
+    </>
   );
-};
 
 export default DashboardContainer;

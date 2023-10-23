@@ -3,7 +3,7 @@ module.exports = {
       browser: true,
       es2021: true,
     },
-    extends: ['plugin:react/recommended', 'airbnb', "eslint:recommended"],
+    extends: ['plugin:react/recommended', 'airbnb'],
     overrides: [],
     parserOptions: {
       ecmaVersion: 'latest',
@@ -57,4 +57,3 @@ module.exports = {
       'jsx-a11y/label-has-associated-control': ['off'],
     },
   }
-  
