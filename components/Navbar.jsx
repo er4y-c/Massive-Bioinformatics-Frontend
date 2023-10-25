@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 const Navbar = () => (
-    <nav className="bg-blue-600 px-4 flex justify-between items-center mb-12">
+    <nav className="bg-blue-600 px-4 flex justify-between items-center">
       <div>
         <Image src="/logo.png" width={90} height={90} alt="Massive Bioinformatics icon" />
       </div>
