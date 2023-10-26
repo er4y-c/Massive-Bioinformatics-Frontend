@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 
+import { VariationContext } from '../../context/variations'
 import FilterRow from './FilterRow'
 
 const FilterSection = () => {
-    const [filterRows, setFilterRows] = useState([{ column: '', value: '' }])
+    const { filterRows, setFilterRows } = useContext(VariationContext)
 
     const addFilterRow = () => {
         setFilterRows([...filterRows, { column: '', value: '' }])
@@ -30,6 +31,7 @@ const FilterSection = () => {
             filter={filter}
             updateFilterRow={updateFilterRow}
             removeFilterRow={removeFilterRow}
+            removable={filterRows.length > 1}
           />
       )) }
         <button

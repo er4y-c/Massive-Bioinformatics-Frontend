@@ -4,7 +4,7 @@ import SelectDropdown from '../SelectDropdown'
 import Input from '../Input'
 import IconButton from '../IconButton'
 
-const FilterRow = ({ index, filter, updateFilterRow, removeFilterRow }) => {
+const FilterRow = ({ index, filter, updateFilterRow, removeFilterRow, removable }) => {
   const columns = [
     { value: 'main.uploaded_variation', label: 'main.uploaded_variation' },
     { value: 'main.existing_variation', label: 'main.existing_variation' },
@@ -23,12 +23,13 @@ const FilterRow = ({ index, filter, updateFilterRow, removeFilterRow }) => {
   }
 
   return (
-    <div className="flex gap-x-2 my-8 flex-wrap">
+    <div className="flex gap-x-2 my-8 flex-wrap gap-y-4">
       <SelectDropdown
         id={`column-${index}`}
         options={columns}
         handleChange={(value) => handleChange('column', value)}
         value={filter.column}
+        className="w-full lg:w-1/2"
       />
       <Input
         name="values"
@@ -37,6 +38,7 @@ const FilterRow = ({ index, filter, updateFilterRow, removeFilterRow }) => {
         placeholder="Value..."
       />
       <IconButton
+        isDisable={!removable}
         onClick={() => removeFilterRow(index)}
         src="/icons/remove.png"
         width={24}
