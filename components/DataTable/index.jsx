@@ -21,7 +21,6 @@ import {
 import DebouncedInput from './DebouncedInput'
 import Filter from './Filter'
 import ButtonGroup from './ButtonGroup'
-import { mockData } from '../../utils'
 import ResultGroup from './ResultGroup'
 
 const fuzzyFilter = (row, columnId, value, addMeta) => {
@@ -37,62 +36,17 @@ const fuzzyFilter = (row, columnId, value, addMeta) => {
 const fuzzySort = (rowA, rowB, columnId) => {
   let dir = 0
 
-  // Only sort by rank if the column has ranking information
   if (rowA.columnFiltersMeta[columnId]) {
     dir = compareItems(
       !rowA.columnFiltersMeta[columnId]?.itemRank,
       !rowB.columnFiltersMeta[columnId]?.itemRank,
     )
   }
-
-  // Provide an alphanumeric fallback for when the item ranks are equal
   return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir
 }
 
-const columns = [
-    {
-      header: 'Row',
-      accessorKey: 'row',
-      cell: (info) => info.getValue(),
-      footer: (props) => props.column.id,
-    },
-    {
-      header: 'Uploaded Variation',
-      accessorKey: 'main_uploaded_variation',
-      cell: (info) => info.getValue(),
-      footer: (props) => props.column.id,
-    },
-    {
-      header: 'Existing Variation',
-      accessorKey: 'main_existing_variation',
-      cell: (info) => info.getValue(),
-      footer: (props) => props.column.id,
-    },
-    {
-      header: 'Dp',
-      accessorKey: 'main_dp',
-      footer: (props) => props.column.id,
-    },
-    {
-      header: 'DANN Score',
-      accessorKey: 'details2_dann_score',
-      footer: (props) => props.column.id,
-    },
-    {
-      header: 'Symbol',
-      accessorKey: 'main_symbol',
-      cell: (info) => info.getValue(),
-      footer: (props) => props.column.id,
-    },
-    {
-      header: 'AF VCF',
-      accessorKey: 'main_af_vcf',
-      footer: (props) => props.column.id,
-    },
-  ]
-
-function DataTableV2() {
-  const finalData = useMemo(() => mockData, []);
+const DataTable = ({ columns, data }) => {
+  const finalData = useMemo(() => data, []);
   const finalColumnDef = useMemo(() => columns, []);
   const [columnFilters, setColumnFilters] = useState(
     [],
@@ -221,4 +175,4 @@ function DataTableV2() {
   )
 }
 
-export default DataTableV2;
+export default DataTable;
