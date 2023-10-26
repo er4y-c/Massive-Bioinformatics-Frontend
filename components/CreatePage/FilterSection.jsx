@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import FilterRow from './FilterRow'
 
 const FilterSection = () => {
-    const [filterRows, setFilterRows] = useState([{ column: '', operator: '', value: '' }])
-
-    useEffect(() => {
-        console.log(filterRows)
-    }, [filterRows.length])
+    const [filterRows, setFilterRows] = useState([{ column: '', value: '' }])
 
     const addFilterRow = () => {
-        setFilterRows([...filterRows, { column: '', operator: '', value: '' }])
+        setFilterRows([...filterRows, { column: '', value: '' }])
     }
 
     const updateFilterRow = (index, updatedRow) => {

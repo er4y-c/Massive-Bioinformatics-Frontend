@@ -1,8 +1,9 @@
 import React from 'react';
 import Select from 'react-select';
 
-const SelectDropdown = ({ options, value, handleChange, name }) => (
+const SelectDropdown = ({ id, options, value, handleChange, name, isMulti }) => (
   <Select
+    instanceId={id}
     classNamePrefix="select"
     defaultValue={value}
     handleChange={handleChange}
@@ -10,6 +11,7 @@ const SelectDropdown = ({ options, value, handleChange, name }) => (
     options={options}
     isClearable
     isSearchable
+    isMulti={isMulti}
   />
   );
 

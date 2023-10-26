@@ -16,13 +16,7 @@ const FilterRow = ({ index, filter, updateFilterRow, removeFilterRow }) => {
     { value: 'links.pheno_pubmed', label: 'links.pheno_pubmed' },
     { value: 'details2.provean', label: 'details2.provean' },
   ]
-  const operators = [
-    { value: 'equals', label: '=' },
-    { value: 'gt', label: '>' },
-    { value: 'gte', label: '≥' },
-    { value: 'lt', label: '<' },
-    { value: 'lte', label: '≤' },
-  ]
+
   const handleChange = (field, value) => {
     const updatedFilter = { ...filter, [field]: value }
     updateFilterRow(index, updatedFilter)
@@ -31,19 +25,15 @@ const FilterRow = ({ index, filter, updateFilterRow, removeFilterRow }) => {
   return (
     <div className="flex gap-x-2 my-8 flex-wrap">
       <SelectDropdown
+        id={`column-${index}`}
         options={columns}
         handleChange={(value) => handleChange('column', value)}
         value={filter.column}
       />
-      <SelectDropdown
-        columns={operators}
-        handleChange={(value) => handleChange('operator', value)}
-        value={filter.operator}
-      />
       <Input
         name="values"
         value={filter.value}
-        handleChange={(value) => handleChange('value', value)}
+        handleChange={(event) => handleChange('value', event.target.value)}
         placeholder="Value..."
       />
       <IconButton
@@ -51,6 +41,7 @@ const FilterRow = ({ index, filter, updateFilterRow, removeFilterRow }) => {
         src="/icons/remove.png"
         width={24}
         height={15}
+        alt="Remove Button"
       />
     </div>
   )

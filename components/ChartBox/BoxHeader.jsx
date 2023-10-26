@@ -12,15 +12,18 @@ const BoxHeader = ({ title, description, openConfirm }) => (
             <IconButton
               src="/icons/edit.png"
               className="rounded-full w-8 h-8"
+              alt="Edit Button"
             />
             <IconButton
               src="/icons/delete.png"
               className="rounded-full w-8 h-8"
               onClick={openConfirm}
+              alt="Delete Button"
             />
             <IconButton
               src="/icons/question.png"
               className="rounded-full w-8 h-8"
+              alt="Help Button"
             />
         </div>
     </div>
