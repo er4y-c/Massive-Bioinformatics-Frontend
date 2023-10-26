@@ -3,20 +3,9 @@ import React from 'react'
 import SelectDropdown from '../SelectDropdown'
 import Input from '../Input'
 import IconButton from '../IconButton'
+import { columnData } from '../../utils'
 
 const FilterRow = ({ index, filter, updateFilterRow, removeFilterRow, removable }) => {
-  const columns = [
-    { value: 'main.uploaded_variation', label: 'main.uploaded_variation' },
-    { value: 'main.existing_variation', label: 'main.existing_variation' },
-    { value: 'main.symbol', label: 'main.symbol' },
-    { value: 'main.af_vcf', label: 'main.af_vcf' },
-    { value: 'main.dp', label: 'main.dp' },
-    { value: 'details2.dann_score', label: 'details2.dann_score' },
-    { value: 'links.mondo', label: 'links.mondo' },
-    { value: 'links.pheno_pubmed', label: 'links.pheno_pubmed' },
-    { value: 'details2.provean', label: 'details2.provean' },
-  ]
-
   const handleChange = (field, value) => {
     const updatedFilter = { ...filter, [field]: value }
     updateFilterRow(index, updatedFilter)
@@ -26,7 +15,7 @@ const FilterRow = ({ index, filter, updateFilterRow, removeFilterRow, removable 
     <div className="flex gap-x-2 my-8 flex-wrap gap-y-4">
       <SelectDropdown
         id={`column-${index}`}
-        options={columns}
+        options={columnData}
         handleChange={(value) => handleChange('column', value)}
         value={filter.column}
         className="w-full lg:w-1/2"

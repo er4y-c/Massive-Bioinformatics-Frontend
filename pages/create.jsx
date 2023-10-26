@@ -3,6 +3,8 @@ import React from 'react'
 import DashboardContainer from '../components/DashboardContainer'
 import FilterSection from '../components/CreatePage/FilterSection'
 import ColumnsSection from '../components/CreatePage/ColumnsSection'
+import OrderingSection from '../components/CreatePage/OrderingSection'
+import GenerateButton from '../components/CreatePage/GenerateButton'
 
 const create = () => (
     <DashboardContainer>
@@ -15,6 +17,9 @@ const create = () => (
         <ColumnsSection />
         <h3 className="text-xl text-gray-700">FILTERS</h3>
         <FilterSection />
+        <h3 className="text-xl text-gray-700">ORDERING</h3>
+        <OrderingSection />
+        <GenerateButton />
       </div>
     </DashboardContainer>
   )

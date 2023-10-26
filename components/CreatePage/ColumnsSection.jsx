@@ -22,7 +22,7 @@ const ColumnsSection = () => {
           isMulti
           id="columns-select"
           options={options}
-          handleChange={(value) => setColumns(value.value)}
+          handleChange={(value) => setColumns(value)}
           className="w-full lg:w-1/2"
         />
     </div>
