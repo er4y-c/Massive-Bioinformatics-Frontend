@@ -46,7 +46,7 @@ const fuzzySort = (rowA, rowB, columnId) => {
 }
 
 const DataTable = ({ columns, data }) => {
-  const finalData = useMemo(() => data, []);
+  const finalData = useMemo(() => data, [data]);
   const finalColumnDef = useMemo(() => columns, []);
   const [columnFilters, setColumnFilters] = useState(
     [],
@@ -79,9 +79,9 @@ const DataTable = ({ columns, data }) => {
    })
 
   useEffect(() => {
-    if (table.getState().columnFilters[0]?.id === 'main_symbol') {
-      if (table.getState().sorting[0]?.id !== 'main_symbol') {
-        table.setSorting([{ id: 'main_symbol', desc: false }])
+    if (table.getState().columnFilters[0]?.id === 'main.symbol') {
+      if (table.getState().sorting[0]?.id !== 'main.symbol') {
+        table.setSorting([{ id: 'main.symbol', desc: false }])
       }
     }
   }, [table.getState().columnFilters[0]?.id])

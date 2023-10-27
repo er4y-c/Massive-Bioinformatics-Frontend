@@ -3,68 +3,66 @@ import React, { useContext } from 'react'
 import DataTable from '../DataTable'
 import NoDataState from '../NoDataState'
 import ChartBox from '../ChartBox'
+import Loading from '../Loading'
 import { VariationContext } from '../../context/variations'
 
 const OverviewSection = () => {
-  const { tableData } = useContext(VariationContext)
+  const { tableData, isLoading } = useContext(VariationContext)
     const columns = [
         {
           header: 'Uploaded Variation',
-          accessorKey: 'main.uploaded_variation',
+          accessorKey: 'main_uploaded_variation',
           cell: (info) => info.getValue(),
         },
         {
           header: 'Existing Variation',
-          accessorKey: 'main.existing_variation',
+          accessorKey: 'main_existing_variation',
           cell: (info) => info.getValue(),
         },
         {
           header: 'Dp',
-          accessorKey: 'main.dp',
+          accessorKey: 'main_dp',
           cell: (info) => info.getValue(),
         },
         {
           header: 'DANN Score',
-          accessorKey: 'details2.dann_score',
+          accessorKey: 'details2_dann_score',
           cell: (info) => info.getValue(),
         },
         {
           header: 'Symbol',
-          accessorKey: 'main.symbol',
+          accessorKey: 'main_symbol',
           cell: (info) => info.getValue(),
         },
         {
           header: 'AF VCF',
-          accessorKey: 'main.af_vcf',
+          accessorKey: 'main_af_vcf',
           cell: (info) => info.getValue(),
         },
         {
           header: 'Mondo',
-          accessorKey: 'links.mondo',
+          accessorKey: 'links_mondo',
           cell: (info) => info.getValue(),
         },
         {
           header: 'Pheno Pubmed',
-          accessorKey: 'links.pheno pubmed',
+          accessorKey: 'links_pheno pubmed',
           cell: (info) => info.getValue(),
         },
         {
           header: 'Provean',
-          accessorKey: 'details2.provean',
+          accessorKey: 'details2_provean',
         },
       ]
 
   return (
-    <div>
-        <h3 className="text-xl text-gray-700 mb-16">OVERVIEW</h3>
-        <ChartBox>
-          {
-          tableData.length === 0
-            ? <NoDataState />
-            : <DataTable columns={columns} data={tableData} />
-         }
-        </ChartBox>
-    </div>
+    <ChartBox>
+      {
+        tableData.length === 0
+          ? isLoading ? <Loading /> : <NoDataState />
+          : <DataTable columns={columns} data={tableData} />
+      }
+    </ChartBox>
   )
 }
 

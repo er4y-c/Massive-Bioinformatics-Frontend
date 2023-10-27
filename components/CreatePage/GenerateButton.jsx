@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import Image from 'next/image'
 
 import { VariationContext } from '../../context/variations'
 import { variation_services } from '../../services/variation'
@@ -29,7 +30,9 @@ const GenerateButton = () => {
       disabled={isLoading}
       className="bg-blue-700 rounded text-white text-sm py-2 px-4"
       onClick={fetchVariations}
-    >Generate Report
+    >
+      { isLoading && <Image src="/spinner.svg" width={20} height={20} className="mr-2 inline-block" /> }
+      <span>Generate Report</span>
     </button>
   )
 }

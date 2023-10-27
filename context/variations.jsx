@@ -1,4 +1,5 @@
-import { createContext, useState, useMemo } from 'react'
+import { createContext, useState, useMemo, useEffect } from 'react'
+import { replaceDotsWithUnderscores } from '../helpers/columnReplacer'
 
 export const VariationContext = createContext({
     columns: null,
@@ -33,6 +34,9 @@ export const VariationProvider = ({ children }) => {
 
     }), [columns, filterRows, orderingRows, selectedColumn, tableData])
 
+    useEffect(() => {
+        replaceDotsWithUnderscores(tableData)
+    }, [tableData])
     return (
         <VariationContext.Provider value={context}>
             {children}
