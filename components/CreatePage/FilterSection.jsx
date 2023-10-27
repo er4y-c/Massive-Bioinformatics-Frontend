@@ -16,21 +16,30 @@ const FilterSection = () => {
     setSelectedColumn(value)
   }
 
-  const handleChange = (column, value) => {
-    const updatedFilter = { [column]: value }
-    setFilterRows(updatedFilter)
+  const handleChange = (value) => {
+    let currentValue = value.split(',')
+    if (currentValue.length === 1 && selectedColumn?.type === 'numeric') {
+      currentValue = value
+    }
+     if (currentValue !== undefined) {
+      const updatedFilter = { [selectedColumn?.value]: currentValue }
+      setFilterRows(updatedFilter)
+      return
+    }
+    const updatedFilter = { [selectedColumn?.value]: value }
+      setFilterRows(updatedFilter)
   }
   return (
     <div className="flex gap-x-2 my-8 flex-wrap gap-y-4">
       <SelectDropdown
         id="column-select"
         options={columnData}
-        handleChange={(value) => handleSelect(value?.value)}
+        handleChange={(value) => handleSelect(value)}
         className="w-full lg:w-1/2"
       />
       <Input
         name="values"
-        handleChange={(event) => handleChange(selectedColumn, event.target.value)}
+        handleChange={(event) => handleChange(event.target.value)}
         placeholder="Value..."
       />
     </div>
