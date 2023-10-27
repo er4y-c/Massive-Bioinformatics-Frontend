@@ -17,7 +17,7 @@ const FilterSection = () => {
   }
 
   const handleChange = (value) => {
-    let currentValue = value.split(',')
+    let currentValue = value.split(',') // Araya virgül koyarak birden fazla değer girilebilmesi için
     if (currentValue.length === 1 && selectedColumn?.type === 'numeric') {
       currentValue = value
     }
