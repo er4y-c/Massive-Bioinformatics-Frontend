@@ -11,7 +11,7 @@ const ButtonGroup = ({
     <div className="flex items-center">
         <PageButton
           className="border border-gray-200 rounded p-1"
-          onClick={() => setPageIndex()}
+          onClick={() => setPageIndex(0)}
           disabled={!getCanPreviousPage()}
         >
             {'<<'}

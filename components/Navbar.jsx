@@ -3,9 +3,7 @@ import Image from 'next/image';
 
 const Navbar = () => (
     <nav className="bg-blue-600 px-4 flex justify-between items-center">
-      <div>
-        <Image priority src="/logo.png" width={90} height={90} alt="Massive Bioinformatics icon" />
-      </div>
+      <Image priority src="/logo.png" width={90} height={90} alt="Massive Bioinformatics icon" />
       <div className="relative">
         <input
           type="text"

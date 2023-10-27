@@ -1,4 +1,5 @@
 import { createContext, useState, useMemo, useEffect } from 'react'
+
 import { replaceDotsWithUnderscores } from '../helpers/columnReplacer'
 
 export const VariationContext = createContext({
@@ -18,6 +19,10 @@ export const VariationProvider = ({ children }) => {
     const [orderingRows, setOrderingRows] = useState({})
     const [selectedColumn, setSelectedColumn] = useState('')
 
+    useEffect(() => {
+        replaceDotsWithUnderscores(tableData)
+    }, [tableData])
+
     const context = useMemo(() => ({
       tableData,
       setTableData,
@@ -34,9 +39,6 @@ export const VariationProvider = ({ children }) => {
 
     }), [columns, filterRows, orderingRows, selectedColumn, tableData])
 
-    useEffect(() => {
-        replaceDotsWithUnderscores(tableData)
-    }, [tableData])
     return (
         <VariationContext.Provider value={context}>
             {children}

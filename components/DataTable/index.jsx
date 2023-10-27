@@ -45,9 +45,9 @@ const fuzzySort = (rowA, rowB, columnId) => {
   return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir
 }
 
-const DataTable = ({ columns, data }) => {
-  const finalData = useMemo(() => data, [data]);
-  const finalColumnDef = useMemo(() => columns, []);
+const DataTable = ({ columns, data, totalResult }) => {
+  const finalData = useMemo(() => data, [data])
+  const finalColumn = useMemo(() => columns, [columns])
   const [columnFilters, setColumnFilters] = useState(
     [],
   )
@@ -55,7 +55,7 @@ const DataTable = ({ columns, data }) => {
 
   const table = useReactTable({
     data: finalData,
-    columns: finalColumnDef,
+    columns: finalColumn,
     filterFns: {
       fuzzy: fuzzyFilter,
     },
@@ -85,7 +85,7 @@ const DataTable = ({ columns, data }) => {
       }
     }
   }, [table.getState().columnFilters[0]?.id])
-
+  useEffect(() => { console.log('rendered', data, columns) }, [data])
   return (
     <div className="shadow-md overflow-auto border-b border-gray-200 sm:rounded-lg">
       <div>
@@ -142,7 +142,7 @@ const DataTable = ({ columns, data }) => {
           {table.getRowModel().rows.map((row) => (
               <tr key={row.id}>
                 {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id} className="px-6 py-4 whitespace-nowrap text-ellipsis max-w-sm">
+                    <td key={cell.id} className="px-6 py-4 whitespace-nowrap text-ellipsis overflow-hidden max-w-sm">
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext(),
@@ -158,7 +158,7 @@ const DataTable = ({ columns, data }) => {
         <ResultGroup
           getState={table.getState}
           getPageCount={table.getPageCount}
-          rowsLength={table.getRowModel().rows.length}
+          rowsLength={totalResult}
           setPageIndex={table.setPageIndex}
           setPageSize={table.setPageSize}
         />
@@ -175,4 +175,4 @@ const DataTable = ({ columns, data }) => {
   )
 }
 
-export default DataTable;
+export default DataTable

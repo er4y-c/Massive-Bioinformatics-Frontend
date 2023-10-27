@@ -4,7 +4,6 @@ import DashboardContainer from '../components/DashboardContainer'
 import FilterSection from '../components/CreatePage/FilterSection'
 import ColumnsSection from '../components/CreatePage/ColumnsSection'
 import OrderingSection from '../components/CreatePage/OrderingSection'
-import GenerateButton from '../components/CreatePage/GenerateButton'
 import OverviewSection from '../components/CreatePage/OverviewSection'
 
 const Dashboard = () => (
@@ -20,10 +19,10 @@ const Dashboard = () => (
         <FilterSection />
         <h3 className="text-xl text-gray-700">ORDERING</h3>
         <OrderingSection />
-        <GenerateButton />
+
         <OverviewSection />
       </div>
     </DashboardContainer>
   )
 
-export default Dashboard;
+export default Dashboard
