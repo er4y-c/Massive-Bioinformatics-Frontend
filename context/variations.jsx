@@ -21,6 +21,10 @@ export const VariationProvider = ({ children }) => {
 
     useEffect(() => {
         replaceDotsWithUnderscores(tableData)
+        /* API'den gelen veriler main.af_vcf gibi değerlerle geliyor.
+        Javascriptte nokta operatörü erişim operatörü olduğu için önyüzde hata veriyor.
+        Bu yüzden noktaları alt çizgi ile değiştiriyoruz.
+         */
     }, [tableData])
 
     const context = useMemo(() => ({
@@ -37,7 +41,7 @@ export const VariationProvider = ({ children }) => {
       selectedColumn,
       setSelectedColumn,
 
-    }), [columns, filterRows, orderingRows, selectedColumn, tableData])
+    }), [tableData])
 
     return (
         <VariationContext.Provider value={context}>

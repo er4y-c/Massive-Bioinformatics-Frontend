@@ -45,9 +45,9 @@ const fuzzySort = (rowA, rowB, columnId) => {
   return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir
 }
 
-const DataTable = ({ columns, data, totalResult }) => {
-  const finalData = useMemo(() => data, [data])
-  const finalColumn = useMemo(() => columns, [columns])
+const DataTable = ({ columns, data }) => {
+  const finalData = useMemo(() => data?.results, [])
+  const finalColumn = useMemo(() => columns, [])
   const [columnFilters, setColumnFilters] = useState(
     [],
   )
@@ -85,7 +85,7 @@ const DataTable = ({ columns, data, totalResult }) => {
       }
     }
   }, [table.getState().columnFilters[0]?.id])
-  useEffect(() => { console.log('rendered', data, columns) }, [data])
+
   return (
     <div className="shadow-md overflow-auto border-b border-gray-200 sm:rounded-lg">
       <div>
@@ -158,7 +158,7 @@ const DataTable = ({ columns, data, totalResult }) => {
         <ResultGroup
           getState={table.getState}
           getPageCount={table.getPageCount}
-          rowsLength={totalResult}
+          rowsLength={data?.count}
           setPageIndex={table.setPageIndex}
           setPageSize={table.setPageSize}
         />

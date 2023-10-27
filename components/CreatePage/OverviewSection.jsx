@@ -77,14 +77,14 @@ const OverviewSection = () => {
       className="bg-blue-700 rounded text-white text-sm py-2 px-4"
       onClick={fetchVariations}
     >
-      { isLoading && <Image src="/spinner.svg" width={20} height={20} className="mr-2 inline-block" /> }
+      { isLoading ? <Image src="/spinner.svg" width={20} height={20} className="mr-2 inline-block" /> : null }
       <span>Generate Report</span>
     </button>
     <ChartBox>
       {
         tableData.length === 0
           ? isLoading ? <Loading /> : <NoDataState />
-          : <DataTable columns={columns} data={tableData?.results} totalResult={tableData?.count} />
+          : <DataTable columns={columns} data={tableData} />
       }
     </ChartBox>
     </>

@@ -8,10 +8,6 @@ import { VariationContext } from '../../context/variations'
 import { columnData } from '../../utils'
 
 const FilterRow = ({ index, removable, removeFilterRow }) => {
-  /* const handleChange = (arr, value) => {
-    const updatedFilter = { ...filter, [arr]: value }
-    updateFilterRow(index, updatedFilter)
-  } */
   const {
     isMulti,
     setIsMulti,
