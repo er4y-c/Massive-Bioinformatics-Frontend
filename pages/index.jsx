@@ -1,26 +1,29 @@
-import React, { useMemo } from 'react';
+import React from 'react'
 
-import DashboardContainer from '../components/DashboardContainer';
-import Header from '../components/Header';
-// import DataTable from '../components/DataTable';
-import { columns, mockData } from '../utils';
-import DataTable from '../components/DataTable';
-import ChartBox from '../components/ChartBox';
-import NoReportState from '../components/Errors/NoReportState';
+import DashboardContainer from '../components/DashboardContainer'
+import FilterSection from '../components/CreatePage/FilterSection'
+import ColumnsSection from '../components/CreatePage/ColumnsSection'
+import OrderingSection from '../components/CreatePage/OrderingSection'
+import GenerateButton from '../components/CreatePage/GenerateButton'
+import OverviewSection from '../components/CreatePage/OverviewSection'
 
-const Home = () => {
-  const finalData = useMemo(() => mockData, []);
-  const finalColumnDef = useMemo(() => columns, []);
-
-  return (
+const Dashboard = () => (
     <DashboardContainer>
-      <Header name="Eray Aynacı" />
-      { /* <ChartBox>
-        <DataTable columns={finalColumnDef} data={finalData} />
-      </ChartBox> */}
-      <NoReportState />
+      <div className="bg-gray-100 w-full h-full p-8">
+        <h1 className="text-2xl text-gray-700">Data Table</h1>
+        <p className="text-sm text-gray-500">Design your table using filters and sort parameters</p>
+      </div>
+      <div className="border-y border-gray-200 p-8 space-y-4">
+        <h3 className="text-xl text-gray-700">COLUMNS</h3>
+        <ColumnsSection />
+        <h3 className="text-xl text-gray-700">FILTERS</h3>
+        <FilterSection />
+        <h3 className="text-xl text-gray-700">ORDERING</h3>
+        <OrderingSection />
+        <GenerateButton />
+        <OverviewSection />
+      </div>
     </DashboardContainer>
-  );
-};
+  )
 
-export default Home;
+export default Dashboard;

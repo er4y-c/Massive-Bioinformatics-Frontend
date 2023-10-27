@@ -2,7 +2,7 @@ import React from 'react'
 
 import IconButton from '../IconButton'
 
-const BoxHeader = ({ title, description, openConfirm }) => (
+const BoxHeader = ({ title, description }) => (
     <div className="mb-8 flex justify-between">
         <div>
           <h1 className="text-xl text-gray-800">{title}</h1>
@@ -17,7 +17,6 @@ const BoxHeader = ({ title, description, openConfirm }) => (
             <IconButton
               src="/icons/delete.png"
               className="rounded-full w-8 h-8"
-              onClick={openConfirm}
               alt="Delete Button"
             />
             <IconButton

@@ -1,45 +1,39 @@
 import React, { useContext } from 'react'
 
+import SelectDropdown from '../SelectDropdown'
+import Input from '../Input'
 import { VariationContext } from '../../context/variations'
-import FilterRow from './FilterRow'
+import { columnData } from '../../utils'
 
 const FilterSection = () => {
-    const { filterRows, setFilterRows } = useContext(VariationContext)
+  const {
+    selectedColumn,
+    setSelectedColumn,
+    setFilterRows,
+  } = useContext(VariationContext)
 
-    const addFilterRow = () => {
-        setFilterRows([...filterRows, { column: '', value: '' }])
-    }
+  const handleSelect = (value) => {
+    setSelectedColumn(value)
+  }
 
-    const updateFilterRow = (index, updatedRow) => {
-        const updatedFilterRows = [...filterRows]
-        updatedFilterRows[index] = updatedRow
-        setFilterRows(updatedFilterRows)
-    }
-
-    const removeFilterRow = (index) => {
-        const updatedFilterRows = [...filterRows];
-        updatedFilterRows.splice(index, 1);
-        setFilterRows(updatedFilterRows);
-    }
-
-    return (
-      <div>
-        { filterRows.map((filter, index) => (
-          <FilterRow
-            key={index}
-            index={index}
-            filter={filter}
-            updateFilterRow={updateFilterRow}
-            removeFilterRow={removeFilterRow}
-            removable={filterRows.length > 1}
-          />
-      )) }
-        <button
-          className="rounded-xl text-sm border border-blue-500 py-2 px-4 text-blue-500"
-          onClick={addFilterRow}
-        >Add Filter
-        </button>
-      </div>
+  const handleChange = (column, value) => {
+    const updatedFilter = { [column]: value }
+    setFilterRows(updatedFilter)
+  }
+  return (
+    <div className="flex gap-x-2 my-8 flex-wrap gap-y-4">
+      <SelectDropdown
+        id="column-select"
+        options={columnData}
+        handleChange={(value) => handleSelect(value?.value)}
+        className="w-full lg:w-1/2"
+      />
+      <Input
+        name="values"
+        handleChange={(event) => handleChange(selectedColumn, event.target.value)}
+        placeholder="Value..."
+      />
+    </div>
     )
 }
 

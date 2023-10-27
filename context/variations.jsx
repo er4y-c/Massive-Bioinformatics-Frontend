@@ -10,18 +10,28 @@ export const VariationContext = createContext({
 })
 
 export const VariationProvider = ({ children }) => {
+    const [tableData, setTableData] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
     const [columns, setColumns] = useState([])
-    const [filterRows, setFilterRows] = useState([{ column: '', value: '' }])
-    const [orderingRows, setOrderingRows] = useState({ column: '', value: '' })
+    const [filterRows, setFilterRows] = useState({})
+    const [orderingRows, setOrderingRows] = useState({})
+    const [selectedColumn, setSelectedColumn] = useState('')
 
     const context = useMemo(() => ({
+      tableData,
+      setTableData,
+      isLoading,
+      setIsLoading,
       columns,
       setColumns,
       filterRows,
       setFilterRows,
       orderingRows,
       setOrderingRows,
-    }), [columns, filterRows, orderingRows])
+      selectedColumn,
+      setSelectedColumn,
+
+    }), [columns, filterRows, orderingRows, selectedColumn, tableData])
 
     return (
         <VariationContext.Provider value={context}>

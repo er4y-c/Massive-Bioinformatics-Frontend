@@ -96,8 +96,8 @@ export const mockData = [
   ]
 
 export const mockOptions = [
-    { label: 'Show 5', value: 5 },
     { label: 'Show 10', value: 10 },
+    { label: 'Show 20', value: 20 },
     { label: 'Show 30', value: 30 },
     { label: 'Show 40', value: 40 },
     { label: 'Show 50', value: 50 },
@@ -134,13 +134,13 @@ export const columns = [
 ];
 
 export const columnData = [
-  { value: 'main.uploaded_variation', label: 'main.uploaded_variation' },
-  { value: 'main.existing_variation', label: 'main.existing_variation' },
-  { value: 'main.symbol', label: 'main.symbol' },
-  { value: 'main.af_vcf', label: 'main.af_vcf' },
-  { value: 'main.dp', label: 'main.dp' },
-  { value: 'details2.dann_score', label: 'details2.dann_score' },
-  { value: 'links.mondo', label: 'links.mondo' },
-  { value: 'links.pheno_pubmed', label: 'links.pheno_pubmed' },
-  { value: 'details2.provean', label: 'details2.provean' },
+  { value: 'main.uploaded_variation', label: 'main.uploaded_variation', type: 'enum' },
+  { value: 'main.existing_variation', label: 'main.existing_variation', type: 'enum' },
+  { value: 'main.symbol', label: 'main.symbol', type: 'enum' },
+  { value: 'main.af_vcf', label: 'main.af_vcf', type: 'numeric' },
+  { value: 'main.dp', label: 'main.dp', type: 'numeric' },
+  { value: 'details2.dann_score', label: 'details2.dann_score', type: 'numeric' },
+  { value: 'links.mondo', label: 'links.mondo', type: 'free_form' },
+  { value: 'links.pheno_pubmed', label: 'links.pheno_pubmed', type: 'free_form' },
+  { value: 'details2.provean', label: 'details2.provean', type: 'free_form' },
 ]

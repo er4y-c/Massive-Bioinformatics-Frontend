@@ -1,14 +1,14 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { VariationContext } from '../../context/variations'
 import SelectDropdown from '../SelectDropdown'
 import { columnData } from '../../utils'
 
 const OrderingSection = () => {
-  const { orderingRows, setOrderingRows } = useContext(VariationContext)
-
-  const handleChange = (field, value) => {
-    const updatedFilter = { ...orderingRows, [field]: value }
+  const { setOrderingRows } = useContext(VariationContext)
+  const [selectedColumn, setSelectedColumn] = useState('')
+  const handleChange = (column, value) => {
+    const updatedFilter = { [column]: value }
     setOrderingRows(updatedFilter)
   }
   return (
@@ -16,7 +16,7 @@ const OrderingSection = () => {
         <SelectDropdown
           id="ordering-select"
           options={columnData}
-          handleChange={(value) => handleChange('column', value)}
+          handleChange={(value) => setSelectedColumn(value?.value)}
           className="lg:w-1/3 w-full"
         />
         <SelectDropdown
@@ -30,7 +30,7 @@ const OrderingSection = () => {
                 value: 'DESC', label: 'DESC',
             },
           ]}
-          handleChange={(value) => handleChange('value', value)}
+          handleChange={(value) => handleChange(selectedColumn, value?.value)}
         />
     </div>
   )
