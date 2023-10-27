@@ -41,7 +41,7 @@ export const VariationProvider = ({ children }) => {
       selectedColumn,
       setSelectedColumn,
 
-    }), [tableData])
+    }), [tableData, columns, filterRows, orderingRows, selectedColumn])
 
     return (
         <VariationContext.Provider value={context}>
